@@ -1,0 +1,23 @@
+GET http://localhost:8080/api/users/
+
+###
+POST http://localhost:8080/api/users/
+Content-Type: application/json
+
+{
+  "name": "Banan Consuela Hercegnő",
+  "gender": "female", 
+  "age": 25,
+  "hobbies": ["valami", "valami más", "valami egyéb"]
+}
+
+###
+DELETE http://localhost:8080/api/users/642274a20bf177239b8a5060
+
+###
+PATCH http://localhost:8080/api/users/63fc6e4bca1cb463caa21779
+Content-Type:  application/json
+
+{
+  "name": "asd"
+}
