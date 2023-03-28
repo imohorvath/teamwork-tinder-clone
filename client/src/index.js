@@ -3,11 +3,12 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import reportWebVitals from "./reportWebVitals";
 
-import Layout from "./Pages/Layout";
+import Header from "./Pages/Header";
 import ErrorPage from "./Pages/ErrorPage";
-import EmployeeList from "./Pages/EmployeeList";
-import EmployeeCreator from "./Pages/EmployeeCreator";
-import EmployeeUpdater from "./Pages/EmployeeUpdater";
+import Login from './Pages/Login';
+import Questionnaire from './Pages/Questionnaire';
+import Matchbox from './Pages/Matchbox';
+import Profile from './Pages/Profile';
 
 import "./index.css";
 import TableTest from "./Pages/TableTest";
@@ -16,20 +17,24 @@ import FormTest from "./Pages/FormTest";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <Header />,
     errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
-        element: <EmployeeList />,
+        element: <Login />,
       },
       {
-        path: "/create",
-        element: <EmployeeCreator />,
+        path: "/:id/questionnaire",
+        element: <Questionnaire />,
       },
       {
-        path: "/update/:id",
-        element: <EmployeeUpdater />,
+        path: "/:id/matchbox",
+        element: <Matchbox />,
+      },
+      {
+        path: "/:id/profile",
+        element: <Profile />,
       },
       {
         path: "/table-test",

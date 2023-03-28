@@ -1,17 +1,17 @@
 import { Outlet, Link } from "react-router-dom";
 
-import "./Layout.css";
+import "./Header.css";
 
-const Layout = () => (
+const Header = () => (
   <div className="Layout">
     <nav>
       <ul>
         <li className="grow">
-          <Link to="/">Employees</Link>
+          <Link>LOGO</Link>
         </li>
         <li>
-          <Link to="/create">
-            <button type="button">Create Employee</button>
+          <Link>
+            <button type="button">BRAND NAME</button>
           </Link>
         </li>
       </ul>
@@ -20,4 +20,4 @@ const Layout = () => (
   </div>
 );
 
-export default Layout;
+export default Header;
