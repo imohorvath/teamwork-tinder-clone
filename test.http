@@ -23,4 +23,8 @@ Content-Type:  application/json
 }
 
 ###
+GET http://localhost:8080/api/hobbies/
+
+###
 GET http://localhost:8080/api/users/6422730b87a78c8990e43df7
+
