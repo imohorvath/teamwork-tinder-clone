@@ -20,7 +20,7 @@ app.get("/api/users/", async (req, res) => {
 });
 
 app.get("/api/users/:id", async (req, res) => {
-  const user = await UserModel.findById(req.params.id);
+  const user = await UserModel.findById(req.params.id).populate('liked').populate('rejected');
   return res.json(user);
 });
 
