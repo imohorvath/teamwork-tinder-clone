@@ -9,6 +9,9 @@ import Login from './Pages/Login';
 import Questionnaire from './Pages/Questionnaire';
 import Matchbox from './Pages/Matchbox';
 import Profile from './Pages/Profile';
+import Matches from "./Pages/Matches";
+import Picks from "./Pages/Picks";
+import SecondChance from "./Pages/SecondChance";
 
 import "./index.css";
 import TableTest from "./Pages/TableTest";
@@ -35,6 +38,18 @@ const router = createBrowserRouter([
       {
         path: "/:id/profile",
         element: <Profile />,
+      },
+      {
+        path: "/:id/matches",
+        element: <Matches />,
+      },
+      {
+        path: "/:id/picks",
+        element: <Picks />,
+      },
+      {
+        path: "/:id/second-chance",
+        element: <SecondChance />,
       },
       {
         path: "/table-test",
