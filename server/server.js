@@ -13,9 +13,14 @@ if (!MONGO_URL) {
 const app = express();
 app.use(express.json());
 
-app.get("/api/users/", async (req, res) => {
-  const users = await UserModel.find().sort({ created: "desc" });
-  return res.json(users);
+app.get("/api/users", async (req, res) => {
+  if (req.query.username) {
+    const users = await UserModel.find({ username: { $regex: req.query.username, $options: "i" },}).sort({ created: "desc" });
+    return res.json(users);
+  } else {
+    const users = await UserModel.find().sort({ created: "desc" });
+    return res.json(users);
+  }
 });
 
 app.get("/api/users/:id", async (req, res) => {
