@@ -10,6 +10,7 @@ const UserSchema = new Schema({
   age: Number,
   hobbies: [String],
   introduction: String,
+  image: String,
   liked: [{
     type: Schema.Types.ObjectId,
     ref: "User",
