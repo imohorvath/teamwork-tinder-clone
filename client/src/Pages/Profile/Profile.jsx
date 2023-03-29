@@ -9,6 +9,18 @@ const Profile = () => {
   const [user, setUser] = useState("");
   const [showDetails, setShowDetails] = useState(false);
 
+  const updateUser = (updatedUser) => {
+    fetch(`/api/users/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedUser),
+    })
+      .then((res) => res.json())
+      .then((user) => setUser(user));
+  };
+
   useEffect(() => {
     fetch(`/api/users/${id}`)
       .then((res) => res.json())
@@ -30,7 +42,7 @@ const Profile = () => {
             >
               {showDetails ? "Hide my personal info" : "Show my personal info"}
             </button>
-            {showDetails && <ProfileDetails user={user} />}
+            {showDetails && <ProfileDetails user={user} updateUser={updateUser}/>}
             <Link>
               <button className="profile-button button-matches">
                 My matches 🔥

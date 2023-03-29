@@ -2,10 +2,10 @@ import "./ProfileDetails.css";
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
 
-const ProfileDetails = ({ user }) => {
+const ProfileDetails = ({ user, updateUser }) => {
   const [editMode, setEditMode] = useState(false);
   const [age, setAge] = useState(user.age);
-  const [hobbies, setHobbies] = useState(user.hobbies.join(", "));
+  const [hobbies, setHobbies] = useState(user.hobbies.map(hobby => ({ value: hobby, label: hobby })));
   const [introduction, setIntroduction] = useState(user.introduction);
   const [hobbyList, setHobbyList] = useState([]);
 
@@ -32,7 +32,8 @@ const ProfileDetails = ({ user }) => {
       hobbies: hobbies.split(", "),
       introduction,
     };
-    //TODO here will come the updateUser(updatedUser);
+    console.log(updatedUser)
+    updateUser(updatedUser);
     setEditMode(false);
   };
 
@@ -86,7 +87,7 @@ const ProfileDetails = ({ user }) => {
                   name="hobbies"
                   placeholder="Select hobbies"
                   isMulti={true}
-                  value={user.hobbies.map(hobby => ({ value: hobby, label: hobby }))}
+                  value={hobbies}
                   onChange={(e) => handleHobbiesChange(e)}
                 />
               )}
