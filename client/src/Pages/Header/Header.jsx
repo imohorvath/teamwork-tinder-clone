@@ -3,21 +3,23 @@ import { Outlet, Link } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => (
-  <div className="Layout">
+  <>
+  <div className="header">
     <nav>
       <ul>
-        <li className="grow">
-          <Link>LOGO</Link>
+        <li className="header-logo">
+          <img
+            className="header-logo-image"
+            src="./images/heartflame02.png"
+            alt="Logo"
+          />
         </li>
-        <li>
-          <Link>
-            <button type="button">BRAND NAME</button>
-          </Link>
-        </li>
+        <li className="header-title">Matchbox</li>
       </ul>
     </nav>
-    <Outlet />
   </div>
+  <Outlet />
+  </>
 );
 
 export default Header;
