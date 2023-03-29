@@ -1,0 +1,22 @@
+.ProfileDetails {
+  display: flex;
+  justify-content: center;
+  width: 35vw;
+}
+
+.detail-label {
+  font-weight: bold;
+  margin-right: 10px;
+  width: 12vw;
+}
+
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.button-row {
+  display: flex;
+}
