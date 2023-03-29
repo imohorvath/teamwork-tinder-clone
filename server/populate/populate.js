@@ -54,10 +54,46 @@ const populateUsers = async () => {
   console.log("Users created");
 };
 
+const updateLikesAndRejects = async () => {
+  const allUsers = await UserModel.find();
+
+  for (let i = 0; i < allUsers.length; i++) {
+    const currentUser = allUsers[i];
+    const otherUsers = allUsers.filter(user => user.id !== currentUser.id && user.gender !== currentUser.gender);
+
+    const liked = [];
+    const rejected = [];
+
+    [...Array(4)].map(() => {
+      const randomUser = pick(otherUsers);
+      if (!liked.includes(randomUser.id) && !rejected.includes(randomUser.id) && randomUser.id !== currentUser.id) {
+        liked.push(randomUser.id);
+      }
+    }
+    );
+
+    [...Array(4)].map(() => {
+      const randomUser = pick(otherUsers);
+      if (!liked.includes(randomUser.id) && !rejected.includes(randomUser.id) && randomUser.id !== currentUser.id) {
+        rejected.push(randomUser.id);
+      }
+    }
+    )
+
+    currentUser.liked = liked;
+    currentUser.rejected = rejected;
+    await currentUser.save();
+  }
+
+  console.log("Likes and rejecteds updated!");
+}
+
 const main = async () => {
   await mongoose.connect(mongoUrl, { family: 4 });
 
-  await populateUsers();
+  //await populateUsers();
+
+  await updateLikesAndRejects();
 
   await mongoose.disconnect();
 };
