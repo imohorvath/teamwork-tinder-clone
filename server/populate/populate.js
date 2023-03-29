@@ -29,6 +29,7 @@ const populateUsers = async () => {
   await UserModel.deleteMany({});
 
   const males = malenames.map((name, index) => ({
+    username: `${name.split(' ')[0].toLowerCase()}${index + 100}`,
     name,
     gender: "male",
     age: createRandomNumber(20, 45),
@@ -38,6 +39,7 @@ const populateUsers = async () => {
   }));
 
   const females = femalenames.map((name, index) => ({
+    username: `${name.split(' ')[0].toLowerCase()}${index + 100}`,
     name,
     gender: "female",
     age: createRandomNumber(20, 35),
