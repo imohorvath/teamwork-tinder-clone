@@ -1,11 +1,29 @@
 import "./ProfileDetails.css";
 import React, { useState, useEffect } from "react";
+import Select from "react-select";
 
 const ProfileDetails = ({ user }) => {
   const [editMode, setEditMode] = useState(false);
   const [age, setAge] = useState(user.age);
   const [hobbies, setHobbies] = useState(user.hobbies.join(", "));
   const [introduction, setIntroduction] = useState(user.introduction);
+  const [hobbyList, setHobbyList] = useState([]);
+
+  const fetchHobbies = () => {
+    fetch("/api/hobbies/")
+      .then((response) => response.json())
+      .then((hobbies) => {
+        let list = [];
+        for (const hobby of hobbies) {
+          list.push({ value: `${hobby}`, label: `${hobby}` });
+        }
+        setHobbyList(list);
+      });
+  };
+
+  useEffect(() => {
+    fetchHobbies();
+  }, []);
 
   const handleSave = () => {
     const updatedUser = {
@@ -23,6 +41,15 @@ const ProfileDetails = ({ user }) => {
     setHobbies(user.hobbies.join(", "));
     setIntroduction(user.introduction);
     setEditMode(false);
+  };
+
+  useEffect(() => {
+    console.log(hobbies);
+  }, [hobbies]);
+
+  const handleHobbiesChange = (selected) => {
+    const selectedHobbies = selected.map(option => option.value);
+    setHobbies(selectedHobbies.join(", "));
   };
 
   return (
@@ -53,15 +80,16 @@ const ProfileDetails = ({ user }) => {
             </div>
             <div className="detail-row">
               <span className="detail-label">Hobbies: </span>
-              <select
-                multiple
-                className="detail-value-edit"
-                value={hobbies.split(", ")}
-              >
-                <option value="Reading">Reading</option>
-                <option value="Writing">Writing</option>
-                <option value="Drawing">Drawing</option>
-              </select>
+              {hobbies && (
+                <Select
+                  options={hobbyList}
+                  name="hobbies"
+                  placeholder="Select hobbies"
+                  isMulti={true}
+                  value={user.hobbies.map(hobby => ({ value: hobby, label: hobby }))}
+                  onChange={(e) => handleHobbiesChange(e)}
+                />
+              )}
             </div>
             <div className="detail-row">
               <span className="detail-label">Introduction: </span>
