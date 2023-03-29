@@ -1,21 +1,37 @@
-.Layout nav ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-  padding: 0.5rem;
-  background-color: rgb(76, 117, 219);
-  color: white;
+.header {
+  padding-left: 3rem;
+  padding-right: 3rem;
+  background-color: rgb(248, 244, 244);
+  color: rgb(70, 5, 5);
   font-size: 1.5rem;
   font-weight: bold;
 }
 
-.Layout nav button {
+.header nav ul {
+  margin: 0;
+  padding: 1rem;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* .header nav button {
   padding: 0.7rem 1.7rem;
   font-weight: bold;
 }
 
-.Layout nav button:hover {
+.header nav button:hover {
   box-shadow: 0px 0px 5px rgb(255, 255, 255);
+} */
+
+.header-logo-image {
+  height: 4rem;
 }
+
+.header-title {
+  font-family: 'Carattere';
+  /* font-family: 'Sacramento'; */
+  font-size: 4rem;
+}
+
