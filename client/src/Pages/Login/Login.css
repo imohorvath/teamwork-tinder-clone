@@ -1,0 +1,30 @@
+.container-login {
+  margin: 0 auto;
+  width: 40%;
+  padding: 1rem;
+  gap: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.container-login h2 {
+  font-family: 'Lora';
+}
+
+.container-login label {
+  font-family: 'Lora';
+}
+
+.container-login input {
+  width: 100%;
+  height: 10%;
+  padding: 0.8rem;
+}
+
+.container-login button {
+  width: 9rem;
+  height: 2.5rem;
+  border-radius: 2.5rem;
+  border: 0.01rem solid black;
+}
