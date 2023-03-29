@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Profile.css";
+import ProfileDetails from "../../Components/ProfileDetails";
 
 const Profile = () => {
   const { id } = useParams();
@@ -24,11 +25,12 @@ const Profile = () => {
           </div>
           <div className="profile-menu">
             <button
-              onClick={() => setShowDetails(true)}
+              onClick={() => setShowDetails(!showDetails)}
               className="profile-button button-personal-details"
             >
-              Show my personal details
+              {showDetails ? "Hide my personal info" : "Show my personal info"}
             </button>
+            {showDetails && <ProfileDetails user={user} />}
             <Link>
               <button className="profile-button button-matches">
                 My matches 🔥
