@@ -43,6 +43,11 @@ const Profile = () => {
               {showDetails ? "Hide my personal info" : "Show my personal info"}
             </button>
             {showDetails && <ProfileDetails user={user} updateUser={updateUser}/>}
+            <Link to={`/${id}/matchbox`}>
+              <button className="profile-button button-matchbox">
+                Go to Matchbox 💕
+              </button>
+            </Link>
             <Link>
               <button className="profile-button button-matches">
                 My matches 🔥

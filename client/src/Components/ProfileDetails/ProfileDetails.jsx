@@ -48,6 +48,7 @@ const ProfileDetails = ({ user, updateUser }) => {
     console.log(hobbies);
   }, [hobbies]);
 
+  //TODO Fix hobbies options when removing one existing
   const handleHobbiesChange = (selected) => {
     const selectedHobbies = selected.map(option => option.value);
     setHobbies(selectedHobbies.join(", "));
