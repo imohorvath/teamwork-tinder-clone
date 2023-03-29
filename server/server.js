@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const UserModel = require("./db/user.model");
+const Hobbies = require("./populate/hobbies");
 
 const { MONGO_URL, PORT = 8080 } = process.env;
 
@@ -55,6 +56,11 @@ app.delete("/api/users/:id", async (req, res, next) => {
   } catch (err) {
     return next(err);
   }
+});
+
+app.get("/api/hobbies/", async (req, res) => {
+  const hobbies = await Hobbies;
+  return res.json(hobbies);
 });
 
 const main = async () => {
