@@ -16,3 +16,7 @@
   align-items: center;
   margin-bottom: 10px;
 }
+
+.button-row {
+  display: flex;
+}

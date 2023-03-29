@@ -101,7 +101,7 @@ const ProfileDetails = ({ user, updateUser }) => {
                 onChange={(e) => setIntroduction(e.target.value)}
               ></input>
             </div>
-            <div className="detail-row">
+            <div className="button-row">
               <button className="save-button" onClick={handleSave}>
                 Save
               </button>
@@ -124,9 +124,11 @@ const ProfileDetails = ({ user, updateUser }) => {
               <span className="detail-label">Introduction: </span>
               <span className="detail-value">{user.introduction}</span>
             </div>
+            <div className="button-row">
             <button className="edit-button" onClick={() => setEditMode(true)}>
               Edit
             </button>
+            </div>
           </>
         )}
       </div>
