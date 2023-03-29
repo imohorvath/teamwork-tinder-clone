@@ -64,7 +64,7 @@ const updateLikesAndRejects = async () => {
     const liked = [];
     const rejected = [];
 
-    [...Array(4)].map(() => {
+    [...Array(15)].map(() => {
       const randomUser = pick(otherUsers);
       if (!liked.includes(randomUser.id) && !rejected.includes(randomUser.id) && randomUser.id !== currentUser.id) {
         liked.push(randomUser.id);

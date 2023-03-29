@@ -4,13 +4,12 @@ import UserList from "../Components/UserList";
 
 const Matches = () => {
   const { id } = useParams();
-  const [user, setUser] = useState("");
   const [matches, setMatches] = useState([]);
 
   useEffect(() => {
-    fetch(`/api/users/${id}`)
+    fetch(`/api/users/${id}/matches`)
       .then((res) => res.json())
-      .then((user) => setUser(user));
+      .then((matches) => setMatches(matches));
   }, [id]);
 
   return (
