@@ -1,3 +1,4 @@
+import "./SignUpForm.css";
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -58,8 +59,8 @@ const SignUpForm = () => {
       },
       body: JSON.stringify(userData),
     })
-    .then((res) => res.json())
-    .then((user) => navigate(`/${id}/questionnaire`));
+      .then((res) => res.json())
+      .then((user) => navigate(`/${id}/questionnaire`));
   };
 
   useEffect(() => {
@@ -68,17 +69,22 @@ const SignUpForm = () => {
 
   return (
     <>
-    <div>
+      <div className="greeting">
         <h1>Welcome!</h1>
-        <h3>You just joined the most prestigious dating site! We appreciate
-        you being here! Let's get you started on your amorous adventures!</h3>
-        <h4>Please share some information about yourself. It will help others find you!</h4>
-    </div>
-      <div>
+        <h3>
+          You just joined the most prestigious dating site! We appreciate you
+          being here! Let's get you started on your amorous adventures!
+        </h3>
+        <h4>
+          Please share some information about yourself. It will help others find
+          you!
+        </h4>
+      </div>
+      <div className="ProfileDetails">
         <form onSubmit={handleSubmit}>
           <div className="detail-row">
             <span className="detail-label">Name: </span>
-            <input className="detail-value-edit" name="name"/>
+            <input className="detail-value-edit" name="name" />
           </div>
           <div className="detail-row">
             <span className="detail-label">Gender: </span>
@@ -102,7 +108,7 @@ const SignUpForm = () => {
           </div>
           <div className="detail-row">
             <span className="detail-label">Age: </span>
-            <input type="number" className="detail-value-edit" name="age"/>
+            <input type="number" className="detail-value-edit" name="age" />
           </div>
           <div className="detail-row">
             <span className="detail-label">Hobbies: </span>
@@ -117,7 +123,11 @@ const SignUpForm = () => {
           </div>
           <div className="detail-row">
             <span className="detail-label">Introduction: </span>
-            <input type="text" className="detail-value-edit" name="introduction"></input>
+            <input
+              type="text"
+              className="detail-value-edit"
+              name="introduction"
+            ></input>
           </div>
           <div className="button-row">
             <button className="save-button" type="submit">
