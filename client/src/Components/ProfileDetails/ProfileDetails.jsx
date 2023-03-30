@@ -101,7 +101,7 @@ const ProfileDetails = ({ user, updateUser }) => {
                   placeholder="Select hobbies"
                   isMulti={true}
                   defaultValue={hobbies}
-                  value={selectedOptions}
+                  value={hobbies}
                   onChange={(e) => handleHobbiesChange(e)}
                 />
               )}
