@@ -31,7 +31,7 @@ const Profile = () => {
     <>
       {user && (
         <div className="profile-container">
-          <h2>Hello {user.name.split(" ")[0]}!</h2>
+          {/* <h2>Hello {user.name.split(" ")[0]}!</h2> */}
           <div className="profile-pic">
             <img src={user.image} alt="profile" />
           </div>
@@ -48,17 +48,17 @@ const Profile = () => {
                 Go to Matchbox 💕
               </button>
             </Link>
-            <Link>
+            <Link to={`/${id}/matches`}>
               <button className="profile-button button-matches">
                 My matches 🔥
               </button>
             </Link>
-            <Link>
+            <Link to={`/${id}/picks`}>
               <button className="profile-button button-favourites">
                 My picks 📌
               </button>
             </Link>
-            <Link>
+            <Link to={`/${id}/second-chance`}>
               <button className="profile-button button-second-chance">
                 Second chance 🔄
               </button>

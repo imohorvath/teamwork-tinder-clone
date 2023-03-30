@@ -4,6 +4,7 @@ import Select from "react-select";
 
 const ProfileDetails = ({ user, updateUser }) => {
   const [editMode, setEditMode] = useState(false);
+  const [name, setName] = useState(user.name);
   const [age, setAge] = useState(user.age);
   const [hobbies, setHobbies] = useState(user.hobbies.map(hobby => ({ value: hobby, label: hobby })));
   const [introduction, setIntroduction] = useState(user.introduction);
@@ -28,6 +29,7 @@ const ProfileDetails = ({ user, updateUser }) => {
   const handleSave = () => {
     const updatedUser = {
       ...user,
+      name,
       age,
       hobbies: hobbies.split(", "),
       introduction,
@@ -62,15 +64,20 @@ const ProfileDetails = ({ user, updateUser }) => {
           <span className="detail-value">{user.username}</span>
         </div>
         <div className="detail-row">
-          <span className="detail-label">Name: </span>
-          <span className="detail-value">{user.name}</span>
-        </div>
-        <div className="detail-row">
           <span className="detail-label">Gender: </span>
           <span className="detail-value">{user.gender}</span>
         </div>
         {editMode ? (
           <>
+            <div className="detail-row">
+            <span className="detail-label">Name: </span>
+              <input
+                type="text"
+                className="detail-value-edit"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
             <div className="detail-row">
               <span className="detail-label">Age: </span>
               <input
@@ -113,6 +120,10 @@ const ProfileDetails = ({ user, updateUser }) => {
           </>
         ) : (
           <>
+            <div className="detail-row">
+              <span className="detail-label">Name: </span>
+              <span className="detail-value">{user.name}</span>
+            </div>
             <div className="detail-row">
               <span className="detail-label">Age: </span>
               <span className="detail-value">{user.age}</span>

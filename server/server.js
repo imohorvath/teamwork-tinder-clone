@@ -25,7 +25,7 @@ app.get("/api/users", async (req, res) => {
 });
 
 app.get("/api/users/:id", async (req, res) => {
-  const user = await UserModel.findById(req.params.id);
+  const user = await UserModel.findById(req.params.id).populate('liked').populate('rejected');
   return res.json(user);
 });
 
@@ -77,13 +77,23 @@ app.patch("/api/users/:id/liked", async (req, res, next) => {
   }
 });
 
+app.get("/api/users/:id/matches", async (req, res) => {
+  const user = await UserModel.findById(req.params.id).populate('liked');
+  const likedUsers = user.liked;
+  const matches = await UserModel.find({
+    _id: { $in: likedUsers.map((user) => user._id) },
+    liked: user._id,
+  });
+  return res.json(matches);
+});
+
 app.get("/api/hobbies/", async (req, res) => {
   const hobbies = await Hobbies;
   return res.json(hobbies);
 });
 
 const main = async () => {
-  await mongoose.connect(MONGO_URL, {family:4});
+  await mongoose.connect(MONGO_URL, { family: 4 });
 
   app.listen(PORT, () => {
     console.log("App is listening on 8080");
