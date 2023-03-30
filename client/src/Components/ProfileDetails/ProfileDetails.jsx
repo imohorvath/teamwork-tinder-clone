@@ -9,6 +9,7 @@ const ProfileDetails = ({ user, updateUser }) => {
   const [hobbies, setHobbies] = useState(user.hobbies.map(hobby => ({ value: hobby, label: hobby })));
   const [introduction, setIntroduction] = useState(user.introduction);
   const [hobbyList, setHobbyList] = useState([]);
+  const [image, setImage] = useState(user.image);
 
   const fetchHobbies = () => {
     fetch("/api/hobbies/")
@@ -34,6 +35,7 @@ const ProfileDetails = ({ user, updateUser }) => {
       age,
       hobbies: updatedHobbies,
       introduction,
+      image,
     };
     console.log(updatedUser)
     updateUser(updatedUser);
@@ -69,6 +71,15 @@ const ProfileDetails = ({ user, updateUser }) => {
         </div>
         {editMode ? (
           <>
+        <div className="detail-row">
+          <span className="detail-label">Profile Picture: </span>
+          <input
+            type="text"
+            className="detail-value-edit"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+          />
+        </div>
             <div className="detail-row">
             <span className="detail-label">Name: </span>
               <input

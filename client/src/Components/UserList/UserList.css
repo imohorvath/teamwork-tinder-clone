@@ -1,6 +1,7 @@
 .userlist-card {
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
   box-shadow: 5px 10px 18px #888888;
   border-radius: 2rem;
   height: 30rem;
