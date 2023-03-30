@@ -8,25 +8,33 @@ import "./Matchbox.css";
 const Matchbox = ( { otherUsers, currentUser } ) => {
   const { id } = useParams();
 
-  // const [otherUsers, setOtherUsers] = useState([]);
-  // const [currentUser, setCurrentUser] = useState("");
   const [current, setCurrent] = useState(0);
-  
-  // useEffect(() => {
-  //   fetch("/api/users")
-  //     .then((response) => response.json())
-  //     .then((users) => {
-  //       setOtherUsers(users.filter((user) => user._id !== id));
-  //       setCurrentUser(users.filter((user) => user._id === id)[0]);
-  //     });
-  // }, [id]);
+  const [users, setUsers] = useState(otherUsers);
 
-  const handleLike = (id) => {
-    // fetch(`/api/users/${id}/liked`)
+  const handleLike = (likedUserId) => {
+    const body = {_id: likedUserId}
+    fetch(`/api/users/${id}/liked`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    }).then(res => res.json());
+
+    setUsers(users => users.filter(user => user._id !==likedUserId));
   };
 
-  const handleReject = (id) => {
+  const handleReject = (rejectedUserId) => {
+    const body = {_id: rejectedUserId}
+    fetch(`/api/users/${id}/liked`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    }).then(res => res.json());
 
+    setUsers(users => users.filter(user => user._id !==rejectedUserId));
   };
 
   const handleSlideRight = () => {
