@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./Login.css";
@@ -89,20 +89,19 @@ const Login = () => {
         <h2 onClick={() => setShowLogin(!showLogin)}>LOGIN</h2>
         {showLogin && (
           <form onSubmit={handleSubmitLogin}>
-            {/* <label>Username:</label> */}
             <input
               type="text"
               id="username"
               name="username"
               pattern="[a-z]{2,10}\d{3}"
-              placeholder="Please type your username"
+              placeholder="Please type your username..."
               value={loginName}
               onChange={(e) => setLoginName(e.target.value)}
             />
-            {showMessageInvalid && showLogin && (
+            {(showMessageInvalid && showLogin) && (
               <>
-                <p>Invalid username</p>
-                <p>Please try again or sign-up</p>
+                <p className="login-container-message-optional">Invalid username</p>
+                <p className="login-container-message-optional">Please try again or sign-up</p>
               </>
             )}
             <button type="submit">Log me in</button>
@@ -111,20 +110,19 @@ const Login = () => {
         <h2 onClick={() => setShowSignup(!showSignup)}>SIGNUP</h2>
         {showSignup && (
           <form onSubmit={handleSubmitSignup}>
-            {/* <label htmlFor="username">Username:</label> */}
             <input
               type="text"
               id="username"
               name="username"
               pattern="[a-z]{2,10}\d{3}"
-              placeholder="Please choose a username eg. anita366"
+              placeholder="Please choose a username eg. anita366..."
               value={signupName}
               onChange={(e) => setSignupName(e.target.value)}
             />
-            {showMessageExisting && showSignup && (
-              <p>This username is already in use, please try another</p>
+            {(showMessageExisting && showSignup) && (
+              <p className="login-container-message-optional">This username is already in use, please try another</p>
             )}
-            <p>Username should consist of 2-10 letters and 3 digits</p>
+            <p className="login-container-message-mandantory">Username should consist of 2-10 letters and 3 digits</p>
             <button type="submit">Sign me up</button>
           </form>
         )}

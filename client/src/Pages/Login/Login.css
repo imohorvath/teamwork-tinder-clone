@@ -5,11 +5,25 @@
   gap: 0.2rem;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
+  text-align: center;
 }
 
 .login-container h2 {
   font-family: 'Lora';
+  cursor: pointer;
+}
+
+.login-container p {
+  margin: 0.5rem;
+  font-size: 1rem;
+}
+
+.login-container-message-mandantory {
+  color: rgb(109, 101, 99);
+}
+
+.login-container-message-optional {
+  color: rgb(70, 5, 5);
 }
 
 .login-container label {
@@ -17,7 +31,7 @@
 }
 
 .login-container input {
-  width: 100%;
+  width: 60%;
   height: 10%;
   padding: 0.8rem;
 }

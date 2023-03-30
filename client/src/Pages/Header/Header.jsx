@@ -18,22 +18,23 @@ const randomGreet = greetings[Math.floor(Math.random() * greetings.length)];
 const Header = () => {
   const { id } = useParams();
 
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState("");
 
   const fetchUser = () => {
     fetch("/api/users")
-      .then((response) => response.json())
-      .then((users) => {
-        setCurrentUser(users.filter((user) => user._id === id)[0]);
-      });
+        .then((response) => response.json())
+        .then((users) => {
+          setCurrentUser(users.filter((user) => user._id === id)[0]);
+        });
+    
   };
 
   useEffect(() => {
     fetchUser();
-  });
+  }, []);
 
   return (
-    <>
+    <div className="Layout">
       <div className="header">
         <nav>
           <ul>
@@ -63,7 +64,7 @@ const Header = () => {
         </nav>
       </div>
       <Outlet />
-    </>
+    </div>
   );
 };
 

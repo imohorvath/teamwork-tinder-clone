@@ -23,7 +23,7 @@ button {
   border-radius: 4px;
   cursor: pointer;
   background-color: white;
-  font-family: Lora;
+  font-family: 'Lora';
 }
 
 button:hover {
@@ -67,6 +67,7 @@ table button {
 form {
   display: grid;
   font-size: 1.2rem;
+  justify-items: center;
 }
 
 .control {

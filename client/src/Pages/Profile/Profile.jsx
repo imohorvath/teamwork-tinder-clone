@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import "./Profile.css";
+
 import ProfileDetails from "../../Components/ProfileDetails";
+import Loading from "../../Components/Loading";
+
+import "./Profile.css";
 
 const Profile = () => {
   const { id } = useParams();
+
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState("");
   const [showDetails, setShowDetails] = useState(false);
 
@@ -18,14 +23,23 @@ const Profile = () => {
       body: JSON.stringify(updatedUser),
     })
       .then((res) => res.json())
-      .then((user) => setUser(user));
+      .then((user) => {
+        setUser(user);
+      });
   };
 
   useEffect(() => {
     fetch(`/api/users/${id}`)
       .then((res) => res.json())
-      .then((user) => setUser(user));
+      .then((user) => {
+        setLoading(false);
+        setUser(user);
+      });
   }, [id]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <>
