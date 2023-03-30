@@ -1,0 +1,41 @@
+.greeting h1 {
+  display: flex;
+  justify-content: center;
+  font-family: "Carattere";
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+}
+
+.greeting h3 {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.greeting h4 {
+  display: flex;
+  justify-content: center;
+}
+
+.ProfileDetails {
+  display: flex;
+  justify-content: center;
+  width: 35vw;
+}
+
+.detail-label {
+  font-weight: bold;
+  margin-right: 10px;
+  width: 12vw;
+}
+
+.detail-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+}

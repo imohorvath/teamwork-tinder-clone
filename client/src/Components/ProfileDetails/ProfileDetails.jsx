@@ -43,7 +43,6 @@ const ProfileDetails = ({ user, updateUser }) => {
 
   const handleCancel = () => {
     setAge(user.age);
-    setHobbies(user.hobbies.join(", "));
     setIntroduction(user.introduction);
     setEditMode(false);
   };
@@ -95,13 +94,14 @@ const ProfileDetails = ({ user, updateUser }) => {
             </div>
             <div className="detail-row">
               <span className="detail-label">Hobbies: </span>
-              {hobbies && (
+              {(
                 <Select
                   options={hobbyList}
                   name="hobbies"
                   placeholder="Select hobbies"
                   isMulti={true}
-                  value={hobbies}
+                  defaultValue={hobbies}
+                  value={selectedOptions}
                   onChange={(e) => handleHobbiesChange(e)}
                 />
               )}
