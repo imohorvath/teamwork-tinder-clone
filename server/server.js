@@ -87,6 +87,34 @@ app.get("/api/users/:id/matches", async (req, res) => {
   return res.json(matches);
 });
 
+app.patch("/api/users/:id/liked/:userId", async (req, res, next) => {
+  const { id, userId } = req.params;
+  try {
+    const user = await UserModel.findOneAndUpdate(
+      { _id: id },
+      { $pull: { liked: userId }},
+      { new: true }
+    ).populate('liked');
+    return res.json(user);
+  } catch (err) {
+    return next(err);
+  }
+});
+
+app.patch("/api/users/:id/rejected/:userId", async (req, res, next) => {
+  const { id, userId } = req.params;
+  try {
+    const user = await UserModel.findOneAndUpdate(
+      { _id: id },
+      { $pull: { rejected: userId }},
+      { new: true }
+    ).populate('rejected');
+    return res.json(user);
+  } catch (err) {
+    return next(err);
+  }
+});
+
 app.get("/api/hobbies/", async (req, res) => {
   const hobbies = await Hobbies;
   return res.json(hobbies);

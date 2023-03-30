@@ -31,3 +31,6 @@ GET http://localhost:8080/api/users/642479ca3eb0eb6efea75b3d
 ###
 GET http://localhost:8080/api/users/642479ca3eb0eb6efea75b3d/matches
 
+###
+PATCH http://localhost:8080/api/users/6424c820264d5afbff3f5adb/liked/6424c823264d5afbff3f5ba7
+

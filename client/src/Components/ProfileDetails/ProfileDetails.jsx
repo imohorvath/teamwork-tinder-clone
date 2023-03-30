@@ -9,7 +9,7 @@ const ProfileDetails = ({ user, updateUser }) => {
   const [hobbies, setHobbies] = useState(user.hobbies.map(hobby => ({ value: hobby, label: hobby })));
   const [introduction, setIntroduction] = useState(user.introduction);
   const [hobbyList, setHobbyList] = useState([]);
-  const [selectedOptions, setSelectedOptions] = useState();
+  const [image, setImage] = useState(user.image);
 
   const fetchHobbies = () => {
     fetch("/api/hobbies/")
@@ -28,14 +28,15 @@ const ProfileDetails = ({ user, updateUser }) => {
   }, []);
 
   const handleSave = () => {
+    const updatedHobbies = hobbies.map(hobby => hobby.value).join(', ')
     const updatedUser = {
       ...user,
       name,
       age,
-      hobbies: selectedOptions.map(a => a.value),
+      hobbies: updatedHobbies,
       introduction,
+      image,
     };
-    console.log(updatedUser)
     updateUser(updatedUser);
     setEditMode(false);
   };
@@ -45,13 +46,10 @@ const ProfileDetails = ({ user, updateUser }) => {
     setIntroduction(user.introduction);
     setEditMode(false);
   };
-  //useEffect for logging
-  useEffect(() => {
-  }, []);
 
   const handleHobbiesChange = (selected) => {
-    setSelectedOptions(selected);
-
+    const selectedHobbies = selected.map(option => ({ value: option.value, label: option.label }));
+    setHobbies(selectedHobbies);
   };
 
   return (
@@ -67,6 +65,15 @@ const ProfileDetails = ({ user, updateUser }) => {
         </div>
         {editMode ? (
           <>
+        <div className="detail-row">
+          <span className="detail-label">Profile Picture: </span>
+          <input
+            type="text"
+            className="detail-value-edit"
+            value={image}
+            onChange={(e) => setImage(e.target.value)}
+          />
+        </div>
             <div className="detail-row">
             <span className="detail-label">Name: </span>
               <input

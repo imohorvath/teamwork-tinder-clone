@@ -1,1 +1,53 @@
+.userlist-card {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 5px 10px 18px #888888;
+  border-radius: 2rem;
+  height: 30rem;
+  width: 20rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  margin: 1rem;
+}
 
+.userlist-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-overlay-text-hobbies {
+  margin-top: 0.2;
+  font-size: 0.75rem;
+}
+
+.remove-button,
+.message-button {
+  font-family: "Lora";
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #db8e95;
+  color: #fff;
+}
+
+.remove-button:hover {
+  background-color: #e94757;
+}
+
+.message-button {
+  background-color: #a7313a;
+}
+
+.message-button:hover {
+    background-color: #e94757;
+    color: white;
+  }
