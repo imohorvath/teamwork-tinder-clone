@@ -8,15 +8,19 @@ const fetchUserbyUserName = (name) => {
 };
 
 const fetchRandomImage = () => {
-  return fetch(`https://api.pexels.com/v1/search?per_page=80&query=person&size=medium`, {
-    headers: {
-      Authorization: "563492ad6f917000010000016100bc354d8a41ee9d24ded961660c34"
+  return fetch(
+    `https://api.pexels.com/v1/search?per_page=80&query=person&size=medium`,
+    {
+      headers: {
+        Authorization:
+          "563492ad6f917000010000016100bc354d8a41ee9d24ded961660c34",
+      },
     }
-  }).then((res) => res.json());
+  ).then((res) => res.json());
 };
 
 const createRandomNumber = (min, max) => {
-  return Math.floor(Math.random()*(max-min+1)+min);
+  return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
 const Login = () => {
@@ -56,7 +60,8 @@ const Login = () => {
 
     if (response.length === 0) {
       const images = await fetchRandomImage();
-      const imageUrl = images.photos[createRandomNumber(0, images.photos.length)].src.portrait;
+      const imageUrl =
+        images.photos[createRandomNumber(0, images.photos.length)].src.portrait;
       createNewUser(signupName, imageUrl);
     } else {
       setShowMessageExisting(true);
@@ -70,10 +75,12 @@ const Login = () => {
     fetch("/api/users", {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(body)
-    }).then(res => res.json()).then(person => console.log(person));
+      body: JSON.stringify(body),
+    })
+      .then((res) => res.json())
+      .then((newuser) => navigate(`/${newuser._id}/first-steps`));
   };
 
   return (

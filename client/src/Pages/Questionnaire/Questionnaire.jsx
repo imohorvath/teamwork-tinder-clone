@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Select from "react-select";
 import { useParams } from "react-router-dom";
 
-import './Questionnaire.css';
+import "./Questionnaire.css";
 
 const Questionnaire = () => {
   const { id } = useParams();
@@ -55,7 +55,9 @@ const Questionnaire = () => {
     let filteredUsers = [...otherUsers]
       .filter((user) => {
         if (filterTags.gender.length === 1) {
-          return user.gender === filterTags.gender[0];
+          return (
+            user.gender === filterTags.gender[0] || user.gender === "nonbinary"
+          );
         } else {
           return user;
         }
@@ -87,7 +89,13 @@ const Questionnaire = () => {
 
   return (
     <>
-      {formVisibility && (
+      <div>
+        <h3>
+          To get you started, we prepared a little questionnaire to help with
+          finding you a match.
+        </h3>
+      </div>
+      {formVisibility ? (
         <div>
           <form onSubmit={filterByForm}>
             <div>
@@ -144,6 +152,13 @@ const Questionnaire = () => {
               <button type="Submit">Search</button>
             </div>
           </form>
+        </div>
+      ) : (
+        <div>
+          <h4>
+            Here are some people we think you'd enjoy getting to know based on
+            your answers:
+          </h4>
         </div>
       )}
     </>

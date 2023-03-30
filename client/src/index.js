@@ -16,6 +16,7 @@ import SecondChance from "./Pages/SecondChance";
 import "./index.css";
 import TableTest from "./Pages/TableTest";
 import FormTest from "./Pages/FormTest";
+import SignUpForm from "./Pages/SignUpForm";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Login />,
+      },
+      {
+        path: "/:id/first-steps",
+        element: <SignUpForm />,
       },
       {
         path: "/:id/questionnaire",
