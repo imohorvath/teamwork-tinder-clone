@@ -31,7 +31,7 @@ const Profile = () => {
     <>
       {user && (
         <div className="profile-container">
-          <h2>Hello {user.name.split(" ")[0]}!</h2>
+          {/* <h2>Hello {user.name.split(" ")[0]}!</h2> */}
           <div className="profile-pic">
             <img src={user.image} alt="profile" />
           </div>
