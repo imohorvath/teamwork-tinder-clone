@@ -10,7 +10,7 @@ const MatchboxPage = () => {
   const [loading, setLoading] = useState(true);
   const [otherUsers, setOtherUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState("");
-  console.log(currentUser);
+  // console.log(currentUser);
 
   useEffect(() => {
     fetch("/api/users")
@@ -18,7 +18,7 @@ const MatchboxPage = () => {
       .then((users) => {
         const currentUser = users.filter((user) => user._id === id)[0];
         setCurrentUser(currentUser);
-        console.log(users)
+        // console.log(users)
         setOtherUsers(
           users.filter(
             (user) =>
@@ -27,7 +27,7 @@ const MatchboxPage = () => {
               !currentUser.rejected.includes(user._id)
           )
         );
-        console.log(otherUsers)
+        // console.log(otherUsers)
         setLoading(false);
       });
   }, [id]);

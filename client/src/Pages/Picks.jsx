@@ -1,25 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
+
 import UserList from "../Components/UserList";
+import Loading from "../Components/Loading";
 
 const Picks = () => {
   const { id } = useParams();
+  
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState("");
 
   useEffect(() => {
     fetch(`/api/users/${id}`)
       .then((res) => res.json())
-      .then((user) => setUser(user));
+      .then((user) => {
+        setLoading(false);
+        setUser(user)
+      });
   }, [id]);
 
   const removeFromLiked = async (likedUserId) => {
+    setLoading(true);
     await fetch(`/api/users/${id}/liked/${likedUserId}`, {
       method: "PATCH",
     })
       .then((res) => res.json())
-      .then((updatedUser) => setUser(updatedUser))
+      .then((updatedUser) => {
+        setLoading(false);
+        setUser(updatedUser)
+      })
       .catch((err) => console.error(err));
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div>

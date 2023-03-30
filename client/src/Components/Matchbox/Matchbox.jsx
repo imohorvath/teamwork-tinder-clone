@@ -22,6 +22,7 @@ const Matchbox = ( { otherUsers, currentUser } ) => {
     }).then(res => res.json());
 
     setUsers(users => users.filter(user => user._id !==likedUserId));
+    handleSlideRight();
   };
 
   const handleReject = (rejectedUserId) => {
@@ -35,6 +36,7 @@ const Matchbox = ( { otherUsers, currentUser } ) => {
     }).then(res => res.json());
 
     setUsers(users => users.filter(user => user._id !==rejectedUserId));
+    handleSlideRight();
   };
 
   const handleSlideRight = () => {

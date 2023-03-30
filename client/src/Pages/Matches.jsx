@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
+
 import UserList from "../Components/UserList";
+import Loading from "../Components/Loading";
 
 const Matches = () => {
   const { id } = useParams();
+
+  const [loading, setLoading] = useState(true);
   const [matches, setMatches] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     fetch(`/api/users/${id}/matches`)
       .then((res) => res.json())
-      .then((matches) => setMatches(matches));
+      .then((matches) => {
+        setLoading(false);
+        setMatches(matches);
+      });
   }, [id]);
 
   const handleMessageClick = () => {
@@ -20,6 +27,10 @@ const Matches = () => {
   const handlePopupClose = () => {
     setShowPopup(false);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div>
