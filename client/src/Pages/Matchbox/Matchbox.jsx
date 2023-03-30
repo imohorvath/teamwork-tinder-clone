@@ -11,7 +11,8 @@ const Matchbox = () => {
   const [otherUsers, setOtherUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState("");
   const [current, setCurrent] = useState(0);
-
+  console.log(currentUser);
+  
   useEffect(() => {
     fetch("/api/users")
       .then((response) => response.json())
@@ -34,10 +35,15 @@ const Matchbox = () => {
       {otherUsers && (
         <div className="card-container">
           {otherUsers.map((user, index) => (
-            <PersonCard person={user} index={index} current={current} onLike={handleLike} onReject={handleReject} onSlide={handleSlideRight} />
+            <PersonCard key={user._id} user={user} index={index} current={current} onLike={handleLike} onReject={handleReject} onSlide={handleSlideRight} />
           ))}
         </div>
       )}
+      {/* {currentUser && (
+        <div className="card-container">
+            <PersonCard key={currentUser._id} user={currentUser} current={current} onLike={handleLike} onReject={handleReject} onSlide={handleSlideRight} />
+        </div>
+      )} */}
     </>
   );
 };
