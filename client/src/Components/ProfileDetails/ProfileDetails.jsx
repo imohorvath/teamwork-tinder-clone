@@ -9,6 +9,7 @@ const ProfileDetails = ({ user, updateUser }) => {
   const [hobbies, setHobbies] = useState(user.hobbies.map(hobby => ({ value: hobby, label: hobby })));
   const [introduction, setIntroduction] = useState(user.introduction);
   const [hobbyList, setHobbyList] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState();
 
   const fetchHobbies = () => {
     fetch("/api/hobbies/")
@@ -31,7 +32,7 @@ const ProfileDetails = ({ user, updateUser }) => {
       ...user,
       name,
       age,
-      hobbies: hobbies.split(", "),
+      hobbies: selectedOptions.map(a => a.value),
       introduction,
     };
     console.log(updatedUser)
@@ -41,19 +42,16 @@ const ProfileDetails = ({ user, updateUser }) => {
 
   const handleCancel = () => {
     setAge(user.age);
-    setHobbies(user.hobbies.join(", "));
     setIntroduction(user.introduction);
     setEditMode(false);
   };
-
+  //useEffect for logging
   useEffect(() => {
-    console.log(hobbies);
-  }, [hobbies]);
+  }, []);
 
-  //TODO Fix hobbies options when removing one existing
   const handleHobbiesChange = (selected) => {
-    const selectedHobbies = selected.map(option => option.value);
-    setHobbies(selectedHobbies.join(", "));
+    setSelectedOptions(selected);
+
   };
 
   return (
@@ -89,13 +87,14 @@ const ProfileDetails = ({ user, updateUser }) => {
             </div>
             <div className="detail-row">
               <span className="detail-label">Hobbies: </span>
-              {hobbies && (
+              {(
                 <Select
                   options={hobbyList}
                   name="hobbies"
                   placeholder="Select hobbies"
                   isMulti={true}
-                  value={hobbies}
+                  defaultValue={hobbies}
+                  value={selectedOptions}
                   onChange={(e) => handleHobbiesChange(e)}
                 />
               )}
