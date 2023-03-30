@@ -10,6 +10,7 @@ const Matchbox = () => {
 
   const [otherUsers, setOtherUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState("");
+  const [current, setCurrent] = useState(0);
 
   useEffect(() => {
     fetch("/api/users")
@@ -20,14 +21,21 @@ const Matchbox = () => {
       });
   }, [id]);
 
+  const handleLike = () => {};
+
+  const handleReject = () => {};
+
+  const handleSlideRight = () => {
+    setCurrent(current === otherUsers.length - 1 ? 0 : current + 1)
+  };
+
   return (
     <>
-      {currentUser && (
+      {otherUsers && (
         <div className="card-container">
-          {/* {otherUsers.map((person) => (
-        <PersonCard person={person} />
-      ))} */}
-          <PersonCard person={currentUser} />
+          {otherUsers.map((user, index) => (
+            <PersonCard person={user} index={index} current={current} onLike={handleLike} onReject={handleReject} onSlide={handleSlideRight} />
+          ))}
         </div>
       )}
     </>
