@@ -16,22 +16,12 @@
   justify-content: space-between;
 }
 
-/* .header nav button {
-  padding: 0.7rem 1.7rem;
-  font-weight: bold;
-}
-
-.header nav button:hover {
-  box-shadow: 0px 0px 5px rgb(255, 255, 255);
-} */
-
 .header-logo-image {
   height: 4rem;
 }
 
 .header-title {
   font-family: 'Carattere';
-  /* font-family: 'Sacramento'; */
   font-size: 4rem;
 }
 

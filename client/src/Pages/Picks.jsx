@@ -25,7 +25,7 @@ const Picks = () => {
     <div>
       <div className="list-header">
         <h2>My Picks 📌</h2>
-        <h4>Changed your mind? Click 'Remove'!</h4>
+        <h4>Not hot enough? Click on 'Remove'!</h4>
       </div>
       {user && user.liked.length > 0 ? (
         <UserList users={user.liked} onRemove={removeFromLiked} />

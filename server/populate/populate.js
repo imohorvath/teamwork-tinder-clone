@@ -3,8 +3,6 @@ Loading the .env file and creates environment variables from it
 */
 require("dotenv").config();
 const mongoose = require("mongoose");
-const malenames = require("./malenames.json");
-const femalenames = require("./femalenames.json");
 const femaleFirstNames = require("./femalefirstnames.json");
 const maleFirstNames = require("./malefirstnames.json");
 const surNames = require("./surnames.json");

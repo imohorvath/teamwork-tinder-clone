@@ -10,14 +10,25 @@ const MatchboxPage = () => {
   const [loading, setLoading] = useState(true);
   const [otherUsers, setOtherUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState("");
-  
+  console.log(currentUser);
+
   useEffect(() => {
     fetch("/api/users")
-      .then((response) => response.json())
+      .then((res) => res.json())
       .then((users) => {
+        const currentUser = users.filter((user) => user._id === id)[0];
+        setCurrentUser(currentUser);
+        console.log(users)
+        setOtherUsers(
+          users.filter(
+            (user) =>
+              user._id !== id && currentUser.gender !== user.gender &&
+              !currentUser.liked.includes(user._id) &&
+              !currentUser.rejected.includes(user._id)
+          )
+        );
+        console.log(otherUsers)
         setLoading(false);
-        setOtherUsers(users.filter((user) => user._id !== id));
-        setCurrentUser(users.filter((user) => user._id === id)[0]);
       });
   }, [id]);
 
@@ -27,7 +38,9 @@ const MatchboxPage = () => {
 
   return (
     <>
-      {otherUsers && <Matchbox otherUsers={otherUsers} currentUser={currentUser}/>}
+      {otherUsers && (
+        <Matchbox otherUsers={otherUsers} currentUser={currentUser} />
+      )}
     </>
   );
 };

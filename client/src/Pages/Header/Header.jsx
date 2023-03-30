@@ -20,18 +20,13 @@ const Header = () => {
 
   const [currentUser, setCurrentUser] = useState("");
 
-  const fetchUser = () => {
-    fetch("/api/users")
-        .then((response) => response.json())
-        .then((users) => {
-          setCurrentUser(users.filter((user) => user._id === id)[0]);
-        });
-    
-  };
-
   useEffect(() => {
-    fetchUser();
-  }, []);
+    fetch("/api/users")
+    .then((response) => response.json())
+    .then((users) => {
+      setCurrentUser(users.filter((user) => user._id === id)[0]);
+    });
+  }, [id]);
 
   return (
     <div className="Layout">
