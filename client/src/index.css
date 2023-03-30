@@ -102,3 +102,7 @@ button {
 .grow {
   flex: 1;
 }
+
+.list-header {
+  text-align: center;
+}
