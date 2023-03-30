@@ -7,7 +7,7 @@ import Header from "./Pages/Header";
 import ErrorPage from "./Pages/ErrorPage";
 import Login from './Pages/Login';
 import Questionnaire from './Pages/Questionnaire';
-import Matchbox from './Pages/Matchbox';
+import MatchboxPage from './Pages/MatchboxPage';
 import Profile from './Pages/Profile';
 import Matches from "./Pages/Matches";
 import Picks from "./Pages/Picks";
@@ -38,7 +38,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/:id/matchbox",
-        element: <Matchbox />,
+        element: <MatchboxPage />,
       },
       {
         path: "/:id/profile",

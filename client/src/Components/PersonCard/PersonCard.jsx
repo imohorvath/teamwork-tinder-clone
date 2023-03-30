@@ -8,7 +8,6 @@ import {
 import "./PersonCard.css";
 
 const PersonCard = ({ user, index, current, onLike, onReject, onSlide }) => {
-  console.log(user);
   return (
     <div key={user._id} className={index === current ? "card card_active" : "card"} style={{ backgroundImage: `url(${user.image})` }}>
       <div className="card-overlay">

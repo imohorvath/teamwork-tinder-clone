@@ -63,6 +63,20 @@ app.delete("/api/users/:id", async (req, res, next) => {
   }
 });
 
+app.patch("/api/users/:id/liked", async (req, res, next) => {
+  const _id = req.body;
+  try {
+    const user = await UserModel.findOneAndUpdate(
+      { _id: req.params.id },
+      { $push: { liked: { ...req.body }}},
+      { new: true }
+    );
+    return res.json(user);
+  } catch (err) {
+    return next(err);
+  }
+});
+
 app.get("/api/users/:id/matches", async (req, res) => {
   const user = await UserModel.findById(req.params.id).populate('liked');
   const likedUsers = user.liked;
