@@ -1,12 +1,15 @@
+import "./Questionnaire.css";
 import React from "react";
 import { useEffect, useState } from "react";
 import Select from "react-select";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import "./Questionnaire.css";
+import Matchbox from "../../Components/Matchbox";
 
 const Questionnaire = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
   const [otherUsers, setOtherUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState();
@@ -78,6 +81,7 @@ const Questionnaire = () => {
       .filter((user) => {
         return user.hobbies.some((hobby) => filterTags.hobbies.includes(hobby));
       });
+
     setOtherUsers(filteredUsers);
     setFormVisibility(false);
   };
@@ -89,23 +93,25 @@ const Questionnaire = () => {
 
   return (
     <>
-      <div>
+      <div className="greeting">
+        <h1>Amazing!</h1>
         <h3>
-          To get you started, we prepared a little questionnaire to help with
-          finding you a match.
+          With your profile all set up, other people can now find you based on a
+          little questionnaire like this one.
         </h3>
+        <h4>Fill it out and start mingling!</h4>
       </div>
       {formVisibility ? (
-        <div>
+        <div className="ProfileDetails">
           <form onSubmit={filterByForm}>
-            <div>
-              <label>Who are you looking for?</label>
+            <div className="detail-row">
+              <span className="detail-label">Who are you looking for?</span>
               <div>
-                <label htmlFor="male">
+                <label className="gap" htmlFor="male">
                   Male
                   <input type="checkbox" name="gender" value="male" id="male" />
                 </label>
-                <label htmlFor="female">
+                <label className="gap" htmlFor="female">
                   Female
                   <input
                     type="checkbox"
@@ -116,29 +122,33 @@ const Questionnaire = () => {
                 </label>
               </div>
             </div>
-            <div>
-              <label>What age range are you looking for?</label>
+            <div className="detail-row">
+              <span className="detail-label">
+                What age range are you looking for?
+              </span>
               <div>
-                <label htmlFor="younger">
+                <label className="gap" htmlFor="younger">
                   Younger
                   <input type="radio" name="age" value="younger" id="younger" />
                 </label>
-                <label htmlFor="sameage">
+                <label className="gap" htmlFor="sameage">
                   Same age
                   <input type="radio" name="age" value="sameage" id="sameage" />
                 </label>
-                <label htmlFor="older">
+                <label className="gap" htmlFor="older">
                   Older
                   <input type="radio" name="age" value="older" id="older" />
                 </label>
-                <label htmlFor="either">
+                <label className="gap" htmlFor="either">
                   Either
                   <input type="radio" name="age" value="either" id="either" />
                 </label>
               </div>
             </div>
-            <div>
-              <label>What interests would you like your partner to have?</label>
+            <div className="detail-row">
+              <span className="detail-label">
+                What interests would you like your partner to have?
+              </span>
               {hobbies && (
                 <Select
                   options={hobbies}
@@ -148,18 +158,28 @@ const Questionnaire = () => {
                 />
               )}
             </div>
-            <div>
+            <div className="button-row">
               <button type="Submit">Search</button>
             </div>
           </form>
         </div>
       ) : (
-        <div>
-          <h4>
-            Here are some people we think you'd enjoy getting to know based on
-            your answers:
-          </h4>
-        </div>
+        <>
+          <div>
+            <h4>
+              Here are some people we think you'd enjoy getting to know based on
+              your answers:
+            </h4>
+          </div>
+          {otherUsers && (
+            <Matchbox otherUsers={otherUsers} currentUser={currentUser} />
+          )}
+          <div>
+            <button onClick={() => navigate(`/${id}/profile`)}>
+              My profile
+            </button>
+          </div>
+        </>
       )}
     </>
   );
