@@ -37,7 +37,6 @@ const ProfileDetails = ({ user, updateUser }) => {
       introduction,
       image,
     };
-    console.log(updatedUser)
     updateUser(updatedUser);
     setEditMode(false);
   };
@@ -48,10 +47,6 @@ const ProfileDetails = ({ user, updateUser }) => {
     setIntroduction(user.introduction);
     setEditMode(false);
   };
-
-  useEffect(() => {
-    console.log(hobbies);
-  }, [hobbies]);
 
   const handleHobbiesChange = (selected) => {
     const selectedHobbies = selected.map(option => ({ value: option.value, label: option.label }));

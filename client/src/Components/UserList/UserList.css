@@ -25,7 +25,8 @@
   font-size: 0.75rem;
 }
 
-.remove-button {
+.remove-button,
+.message-button {
   font-family: "Lora";
   position: absolute;
   bottom: 0.5rem;
@@ -41,3 +42,12 @@
 .remove-button:hover {
   background-color: #e94757;
 }
+
+.message-button {
+  background-color: #a7313a;
+}
+
+.message-button:hover {
+    background-color: #e94757;
+    color: white;
+  }
