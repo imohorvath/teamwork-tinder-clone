@@ -14,7 +14,7 @@ const Matches = () => {
 
   return (
     <div>
-      <h2>My Matches 🔥</h2>
+      <h2 className="list-header">My Matches 🔥</h2>
       {matches.length > 0 ? (
         <UserList users={matches} />
       ) : (

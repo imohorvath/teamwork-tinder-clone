@@ -14,7 +14,7 @@ const SecondChance = () => {
 
   return (
     <div>
-      <h2>Second Chance</h2>
+      <h2 className="list-header">Second Chance 🔄</h2>
       {user && user.rejected.length > 0 ? (
         <UserList users={user.rejected} />
       ) : (

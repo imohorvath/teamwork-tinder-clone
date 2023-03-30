@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
 import "./UserList.css";
 
-const UserList = ({ users }) => {
+const UserList = ({ users, onRemove }) => {
   return (
     <div className="userlist-container">
       {users.map((user) => (
@@ -17,6 +16,7 @@ const UserList = ({ users }) => {
               </p>
               <p className="card-overlay-text-intro">{user.introduction}</p>
               <p className="card-overlay-text-hobbies">Hobbies: {user.hobbies.join(', ')}</p>
+              <button className="remove-button" onClick={() => onRemove(user._id)}>Remove</button>
             </div>
           </div>
         </div>
