@@ -63,6 +63,20 @@ app.delete("/api/users/:id", async (req, res, next) => {
   }
 });
 
+app.patch("/api/users/:id/liked", async (req, res, next) => {
+  const _id = req.body;
+  try {
+    const user = await UserModel.findOneAndUpdate(
+      { _id: req.params.id },
+      { $push: { liked: { ...req.body }}},
+      { new: true }
+    );
+    return res.json(user);
+  } catch (err) {
+    return next(err);
+  }
+});
+
 app.get("/api/hobbies/", async (req, res) => {
   const hobbies = await Hobbies;
   return res.json(hobbies);
