@@ -78,7 +78,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="container-login">
+      <div className="login-container">
         <h2 onClick={() => setShowLogin(!showLogin)}>LOGIN</h2>
         {showLogin && (
           <form onSubmit={handleSubmitLogin}>
