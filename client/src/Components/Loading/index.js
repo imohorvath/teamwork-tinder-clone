@@ -1,3 +1,3 @@
-import ProfileDetails from "./ProfileDetails";
+import Loading from "./Loading";
 
-export default ProfileDetails;
+export default Loading;

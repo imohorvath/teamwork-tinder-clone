@@ -1,5 +1,22 @@
 import "./Loading.css";
 
-const Loading = () => <div className="Loading" />;
+const Loading = () => {
+  return (
+    <div className="lds-default">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  );
+};
 
 export default Loading;
