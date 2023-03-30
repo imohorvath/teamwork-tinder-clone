@@ -27,11 +27,12 @@ const ProfileDetails = ({ user, updateUser }) => {
   }, []);
 
   const handleSave = () => {
+    const updatedHobbies = hobbies.map(hobby => hobby.value).join(', ')
     const updatedUser = {
       ...user,
       name,
       age,
-      hobbies: hobbies.split(", "),
+      hobbies: updatedHobbies,
       introduction,
     };
     console.log(updatedUser)
@@ -50,10 +51,9 @@ const ProfileDetails = ({ user, updateUser }) => {
     console.log(hobbies);
   }, [hobbies]);
 
-  //TODO Fix hobbies options when removing one existing
   const handleHobbiesChange = (selected) => {
-    const selectedHobbies = selected.map(option => option.value);
-    setHobbies(selectedHobbies.join(", "));
+    const selectedHobbies = selected.map(option => ({ value: option.value, label: option.label }));
+    setHobbies(selectedHobbies);
   };
 
   return (
