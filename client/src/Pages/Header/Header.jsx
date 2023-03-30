@@ -10,6 +10,7 @@ const greetings = [
   "Howdy, ",
   "Peek-a-boo, ",
   "You know who this is. It's ",
+  "Hola, ",
 ];
 
 const randomGreet = greetings[Math.floor(Math.random() * greetings.length)];
@@ -49,14 +50,13 @@ const Header = () => {
             <ul>
               <Link to={`/${id}/profile`}>
                 <li className="header-welcomemsg">
-                  {randomGreet}
-                  {currentUser.name.split(" ")[0]}!
+                  {currentUser.name
+                    ? randomGreet + currentUser.name.split(" ")[0] + "!"
+                    : randomGreet + currentUser.username + "!"}
                 </li>
               </Link>
               <Link to={`/`}>
-                <li className="header-logout">
-                 Logout
-                </li>
+                <li className="header-logout">Logout</li>
               </Link>
             </ul>
           )}
