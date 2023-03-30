@@ -3,11 +3,22 @@ import "./UserList.css";
 
 const UserList = ({ users }) => {
   return (
-    <div>
+    <div className="userlist-container">
       {users.map((user) => (
-        <div key={user.id}>
-          <h3>{user.name}</h3>
-          <img src={user.image} alt="profile" />
+        <div
+          key={user._id}
+          className="userlist-card"
+          style={{ backgroundImage: `url(${user.image})` }}
+        >
+          <div className="card-overlay">
+            <div className="card-overlay-text">
+              <p className="card-overlay-text-name">
+                {user.name} {user.age}
+              </p>
+              <p className="card-overlay-text-intro">{user.introduction}</p>
+              <p className="card-overlay-text-hobbies">Hobbies: {user.hobbies.join(', ')}</p>
+            </div>
+          </div>
         </div>
       ))}
     </div>

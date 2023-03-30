@@ -1,1 +1,25 @@
+.userlist-card {
+  background-repeat: no-repeat;
+  background-size: cover;
+  box-shadow: 5px 10px 18px #888888;
+  border-radius: 2rem;
+  height: 30rem;
+  width: 20rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  margin: 1rem;
+}
 
+.userlist-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+}
+
+.card-overlay-text-hobbies {
+    margin-top: 0.2;
+    font-size: 0.75rem;
+  }
