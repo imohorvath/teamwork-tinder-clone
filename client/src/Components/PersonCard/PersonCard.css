@@ -1,6 +1,5 @@
 .card {
   background-repeat: no-repeat;
-  /* background-size: contain; */
   background-size: cover;
   background-position: center;
   box-shadow: 5px 10px 18px #888888;
@@ -21,7 +20,7 @@
   pointer-events: visible;
 }
 
-.carouselCard {
+/* .carouselCard {
   display: flex;
   flex: 1;
   position: absolute;
@@ -35,7 +34,7 @@
   pointer-events: none;
   transform: scale(0.8);
   transition: 0.5s ease-in-out;
-}
+} */
 
 /* .carouselCard_active {
   opacity: 1;
@@ -43,12 +42,11 @@
   pointer-events: visible;
 } */
 
-
 .card-overlay {
   background-color: #e6e2e271;
   border-bottom-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
-  height: 32%;
+  height: 35%;
   width: 100%;
   padding: 0.3rem;
 }
@@ -64,8 +62,8 @@
 }
 
 .card-overlay-text-intro {
-  margin: 0;
-  font-size: 0.75rem;
+  margin: 0.5rem;
+  font-size: 0.82rem;
 }
 
 .card-overlay-buttons {
@@ -85,14 +83,29 @@
 }
 
 .closecircle {
-  color:rgba(194, 26, 26, 0.73);
+  color:rgba(158, 18, 18, 0.73);
+  cursor: pointer;
+}
+
+.closecircle:hover {
+  color:rgba(224, 26, 26, 0.925);
 }
 
 .checkcircle{
   color:rgba(8, 121, 40, 0.73);
+  cursor: pointer;
+}
+
+.checkcircle:hover{
+  color:rgba(35, 211, 85, 0.73);
 }
 
 .rightcircle {
   color:rgba(53, 39, 39, 0.73);
+  cursor: pointer;
+}
+
+.rightcircle:hover {
+  color:rgba(161, 149, 149, 0.863);
 }
 

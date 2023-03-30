@@ -94,7 +94,7 @@ const Login = () => {
               id="username"
               name="username"
               pattern="[a-z]{2,10}\d{3}"
-              placeholder="Please type your username..."
+              placeholder="Please type here your username..."
               value={loginName}
               onChange={(e) => setLoginName(e.target.value)}
             />

@@ -27,7 +27,7 @@ const Matchbox = ( { otherUsers, currentUser } ) => {
 
   const handleReject = (rejectedUserId) => {
     const body = {_id: rejectedUserId}
-    fetch(`/api/users/${id}/liked`, {
+    fetch(`/api/users/${id}/rejected`, {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

@@ -1,5 +1,4 @@
 import {
-  AiOutlineMessage,
   AiOutlineRightCircle,
   AiOutlineCheckCircle,
   AiOutlineCloseCircle,
