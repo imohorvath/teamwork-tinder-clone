@@ -23,10 +23,12 @@ button {
   border-radius: 4px;
   cursor: pointer;
   background-color: white;
+  font-family: Lora;
 }
 
 button:hover {
-  border-color: rgb(99, 151, 254);
+  border-color: rgb(201, 70, 70);
+  color: rgb(201, 70, 70);
 }
 
 a {

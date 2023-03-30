@@ -27,4 +27,10 @@
 
 .profile-button {
   width: 35vw;
+  font-family: "Lora";
+}
+
+.profile-button:hover {
+  border-color: rgb(201, 70, 70);
+  color: rgb(201, 70, 70);
 }
