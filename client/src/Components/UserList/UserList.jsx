@@ -15,7 +15,7 @@ const UserList = ({ users, onRemove }) => {
                 {user.name} {user.age}
               </p>
               <p className="card-overlay-text-intro">{user.introduction}</p>
-              <p className="card-overlay-text-hobbies">Hobbies: {user.hobbies.join(', ')}</p>
+              <p className="card-overlay-text-hobbies">Hobbies: {user?.hobbies?.join(', ') ?? 'No hobbies listed'}</p>
               <button className="remove-button" onClick={() => onRemove(user._id)}>Remove</button>
             </div>
           </div>

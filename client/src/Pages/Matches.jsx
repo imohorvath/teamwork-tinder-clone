@@ -14,7 +14,10 @@ const Matches = () => {
 
   return (
     <div>
-      <h2 className="list-header">My Matches 🔥</h2>
+      <div className="list-header">
+        <h2>My Matches 🔥</h2>
+        <h4>Find your perfect flame and see who's burning for you too!</h4>
+      </div>
       {matches.length > 0 ? (
         <UserList users={matches} />
       ) : (
