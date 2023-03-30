@@ -14,7 +14,7 @@ const Header = () => (
             alt="Logo"
           />
         </li>
-        <li className="header-title">Matchbox</li>
+        <li className="header-title">MatchBox</li>
       </ul>
     </nav>
   </div>

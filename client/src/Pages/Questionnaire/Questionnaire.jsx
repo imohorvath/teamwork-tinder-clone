@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import Select from "react-select";
 import { useParams } from "react-router-dom";
 
+import './Questionnaire.css';
+
 const Questionnaire = () => {
   const { id } = useParams();
 

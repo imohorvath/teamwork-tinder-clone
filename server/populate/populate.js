@@ -5,12 +5,15 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const malenames = require("./malenames.json");
 const femalenames = require("./femalenames.json");
+const femaleFirstNames = require("./femalefirstnames.json");
+const maleFirstNames = require("./malefirstnames.json");
+const surNames = require("./surnames.json");
 const hobbies = require("./hobbies.json");
 const UserModel = require("../db/user.model");
-const femaleimages = require("./femaleimages.json");
-const maleimages = require("./maleimages.json");
-const femaleintroductions = require("./femaleintroductions.json");
-const maleintroductions = require("./maleintroductions.json");
+const femaleImages = require("./femaleimages.json");
+const maleImages = require("./maleimages.json");
+const femaleIntroductions = require("./femaleintroductions.json");
+const maleIntroductions  = require("./maleintroductions.json");
 
 const mongoUrl = process.env.MONGO_URL;
 
@@ -28,24 +31,24 @@ const createRandomNumber = (min, max) => {
 const populateUsers = async () => {
   await UserModel.deleteMany({});
 
-  const males = malenames.map((name, index) => ({
-    username: `${name.split(' ')[0].toLowerCase()}${index + 100}`,
-    name,
+  const males = maleFirstNames.map((name, index) => ({
+    username: `${name.toLowerCase()}${index + 100}`,
+    name: `${name} ${pick(surNames)}`,
     gender: "male",
-    age: createRandomNumber(20, 45),
+    age: createRandomNumber(25, 45),
     hobbies: [...Array(3)].map(() => pick(hobbies)),
-    introduction: maleintroductions[index],
-    image: maleimages[index]
+    introduction: maleIntroductions[index],
+    image: maleImages[index]
   }));
 
-  const females = femalenames.map((name, index) => ({
-    username: `${name.split(' ')[0].toLowerCase()}${index + 100}`,
-    name,
+  const females = femaleFirstNames.map((name, index) => ({
+    username: `${name.toLowerCase()}${index + 100}`,
+    name: `${name} ${pick(surNames)}`,
     gender: "female",
-    age: createRandomNumber(20, 35),
+    age: createRandomNumber(25, 45),
     hobbies: [...Array(3)].map(() => pick(hobbies)),
-    introduction: femaleintroductions[index],
-    image: femaleimages[index]
+    introduction: femaleIntroductions[index],
+    image: femaleImages[index]
   }));
 
   await UserModel.create(...males);
@@ -72,7 +75,7 @@ const updateLikesAndRejects = async () => {
     }
     );
 
-    [...Array(4)].map(() => {
+    [...Array(3)].map(() => {
       const randomUser = pick(otherUsers);
       if (!liked.includes(randomUser.id) && !rejected.includes(randomUser.id) && randomUser.id !== currentUser.id) {
         rejected.push(randomUser.id);
@@ -91,7 +94,7 @@ const updateLikesAndRejects = async () => {
 const main = async () => {
   await mongoose.connect(mongoUrl, { family: 4 });
 
-  //await populateUsers();
+  // await populateUsers();
 
   await updateLikesAndRejects();
 
