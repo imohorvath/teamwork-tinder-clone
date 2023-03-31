@@ -17,13 +17,7 @@
   justify-content: center;
 }
 
-.ProfileDetails {
-  display: flex;
-  justify-content: center;
-  width: 35vw;
-}
-
-.detail-row {
+/* .detail-row {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
@@ -33,6 +27,11 @@
   font-weight: bold;
   margin-right: 10px;
   width: 12vw;
+} */
+
+.message-subtitle h4 {
+  display: flex;
+  justify-content: center;
 }
 
 .button-row {

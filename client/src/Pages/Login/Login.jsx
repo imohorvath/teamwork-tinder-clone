@@ -86,7 +86,7 @@ const Login = () => {
   return (
     <>
       <div className="login-container">
-        <h2 onClick={() => setShowLogin(!showLogin)}>LOGIN</h2>
+        <h1 onClick={() => setShowLogin(!showLogin)}>LOGIN</h1>
         {showLogin && (
           <form onSubmit={handleSubmitLogin}>
             <input
@@ -107,7 +107,7 @@ const Login = () => {
             <button type="submit">Log me in</button>
           </form>
         )}
-        <h2 onClick={() => setShowSignup(!showSignup)}>SIGNUP</h2>
+        <h1 onClick={() => setShowSignup(!showSignup)}>SIGNUP</h1>
         {showSignup && (
           <form onSubmit={handleSubmitSignup}>
             <input

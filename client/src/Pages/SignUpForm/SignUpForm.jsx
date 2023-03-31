@@ -80,61 +80,63 @@ const SignUpForm = () => {
           you!
         </h4>
       </div>
-      <div className="ProfileDetails">
-        <form onSubmit={handleSubmit}>
-          <div className="detail-row">
-            <span className="detail-label">Name: </span>
-            <input className="detail-value-edit" name="name" />
-          </div>
-          <div className="detail-row">
-            <span className="detail-label">Gender: </span>
-            <label htmlFor="male">
-              Male
-              <input type="radio" name="gender" value="male" id="male" />
-            </label>
-            <label htmlFor="female">
-              Female
-              <input type="radio" name="gender" value="female" id="female" />
-            </label>
-            <label htmlFor="nonbinary">
-              Non-binary
+      <div className="main-menu">
+        <div className="main-details">
+          <form className="main-form" onSubmit={handleSubmit}>
+            <div className="main-form-row">
+              <span className="main-form-label">Name: </span>
+              <input className="main-form-input" name="name" />
+            </div>
+            <div className="main-form-row">
+              <span className="main-form-label">Gender: </span>
+              <label htmlFor="male">
+                Male
+                <input type="radio" name="gender" value="male" id="male" />
+              </label>
+              <label htmlFor="female">
+                Female
+                <input type="radio" name="gender" value="female" id="female" />
+              </label>
+              <label htmlFor="nonbinary">
+                Non-binary
+                <input
+                  type="radio"
+                  name="gender"
+                  value="nonbinary"
+                  id="nonbinary"
+                />
+              </label>
+            </div>
+            <div className="main-form-row">
+              <span className="main-form-label">Age: </span>
+              <input type="number" className="main-form-input" name="age" />
+            </div>
+            <div className="main-form-row">
+              <span className="main-form-label">Hobbies: </span>
+              {hobbyList && (
+                <Select
+                  options={hobbyList}
+                  name="hobbies"
+                  placeholder="Select hobbies"
+                  isMulti={true}
+                />
+              )}
+            </div>
+            <div className="main-form-row">
+              <span className="main-form-label">Introduction: </span>
               <input
-                type="radio"
-                name="gender"
-                value="nonbinary"
-                id="nonbinary"
-              />
-            </label>
-          </div>
-          <div className="detail-row">
-            <span className="detail-label">Age: </span>
-            <input type="number" className="detail-value-edit" name="age" />
-          </div>
-          <div className="detail-row">
-            <span className="detail-label">Hobbies: </span>
-            {hobbyList && (
-              <Select
-                options={hobbyList}
-                name="hobbies"
-                placeholder="Select hobbies"
-                isMulti={true}
-              />
-            )}
-          </div>
-          <div className="detail-row">
-            <span className="detail-label">Introduction: </span>
-            <input
-              type="text"
-              className="detail-value-edit"
-              name="introduction"
-            ></input>
-          </div>
-          <div className="button-row">
-            <button className="save-button" type="submit">
-              Save
-            </button>
-          </div>
-        </form>
+                type="text"
+                className="main-form-input"
+                name="introduction"
+              ></input>
+            </div>
+            <div className="button-row">
+              <button className="save-button" type="submit">
+                Save
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   );

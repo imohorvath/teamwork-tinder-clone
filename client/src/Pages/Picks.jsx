@@ -6,7 +6,7 @@ import Loading from "../Components/Loading";
 
 const Picks = () => {
   const { id } = useParams();
-  
+
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState("");
 
@@ -15,7 +15,7 @@ const Picks = () => {
       .then((res) => res.json())
       .then((user) => {
         setLoading(false);
-        setUser(user)
+        setUser(user);
       });
   }, [id]);
 
@@ -27,7 +27,7 @@ const Picks = () => {
       .then((res) => res.json())
       .then((updatedUser) => {
         setLoading(false);
-        setUser(updatedUser)
+        setUser(updatedUser);
       })
       .catch((err) => console.error(err));
   };
@@ -40,12 +40,14 @@ const Picks = () => {
     <div>
       <div className="list-header">
         <h2>My Picks 📌</h2>
-        <h4>Not hot enough? Click on 'Remove'!</h4>
+        <h3>Not hot enough? Click on 'Remove'!</h3>
       </div>
       {user && user.liked.length > 0 ? (
         <UserList users={user.liked} onRemove={removeFromLiked} />
       ) : (
-        <p>You have no liked users yet.</p>
+        <div className="list-message">
+          <p>You have no liked users yet.</p>
+        </div>
       )}
     </div>
   );

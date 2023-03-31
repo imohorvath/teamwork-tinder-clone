@@ -13,6 +13,7 @@
   opacity: 0;
   pointer-events: none;
   overflow: hidden;
+  margin-bottom: 4.5rem;
 }
 
 .card_active {
