@@ -9,7 +9,7 @@
 
 .header nav ul {
   margin: 0;
-  padding: 1rem;
+  padding: 0.5rem;
   list-style-type: none;
   display: flex;
   align-items: center;

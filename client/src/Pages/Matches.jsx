@@ -36,7 +36,7 @@ const Matches = () => {
     <div>
       <div className="list-header">
         <h2>My Matches 🔥</h2>
-        <h4>Find your perfect flame and see who's burning for you too!</h4>
+        <h3>Find your perfect flame and see who's burning for you too!</h3>
       </div>
       {matches.length > 0 ? (
         <UserList
@@ -45,7 +45,10 @@ const Matches = () => {
           onMessageClick={handleMessageClick}
         />
       ) : (
-        <p>You have no matches yet.</p>
+        <div className="list-message">
+          <p>You have no matches yet. :(</p>
+          <p>Come back later.</p>
+        </div>
       )}
       {showPopup && (
         <div className="popup">

@@ -106,7 +106,8 @@ button {
   flex: 1;
 }
 
-.list-header {
+.list-header, 
+.list-message {
   text-align: center;
 }
 

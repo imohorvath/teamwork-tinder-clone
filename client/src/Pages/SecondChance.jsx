@@ -40,12 +40,14 @@ const SecondChance = () => {
     <div>
       <div className="list-header">
         <h2>Second Chance 🔄</h2>
-        <h4>Do you want to give them another chance? Click 'Remove'!</h4>
+        <h3>Do you want to give them another chance? Click on'Remove'!</h3>
       </div>
       {user && user.rejected.length > 0 ? (
         <UserList users={user.rejected} onRemove={removeFromRejected} />
       ) : (
-        <p>You have no rejected users yet.</p>
+        <div className="list-message">
+          <p>You have no rejected users yet.</p>
+        </div>
       )}
     </div>
   );

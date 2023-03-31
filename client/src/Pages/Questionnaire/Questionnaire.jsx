@@ -102,70 +102,87 @@ const Questionnaire = () => {
         <h4>Fill it out and start mingling!</h4>
       </div>
       {formVisibility ? (
-        <div className="ProfileDetails">
-          <form onSubmit={filterByForm}>
-            <div className="detail-row">
-              <span className="detail-label">Who are you looking for?</span>
-              <div>
-                <label className="gap" htmlFor="male">
-                  Male
-                  <input type="checkbox" name="gender" value="male" id="male" />
-                </label>
-                <label className="gap" htmlFor="female">
-                  Female
-                  <input
-                    type="checkbox"
-                    name="gender"
-                    value="female"
-                    id="female"
+        <div className="main-menu">
+          <div className="main-details">
+            <form className="main-form" onSubmit={filterByForm}>
+              <div className="main-form-row">
+                <span className="main-form-label">Who are you looking for?</span>
+                <div>
+                  <label className="gap" htmlFor="male">
+                    Male
+                    <input
+                      type="checkbox"
+                      name="gender"
+                      value="male"
+                      id="male"
+                    />
+                  </label>
+                  <label className="gap" htmlFor="female">
+                    Female
+                    <input
+                      type="checkbox"
+                      name="gender"
+                      value="female"
+                      id="female"
+                    />
+                  </label>
+                </div>
+              </div>
+              <div className="main-form-row">
+                <span className="main-form-label">
+                  What age range are you looking for?
+                </span>
+                <div>
+                  <label className="gap" htmlFor="younger">
+                    Younger
+                    <input
+                      type="radio"
+                      name="age"
+                      value="younger"
+                      id="younger"
+                    />
+                  </label>
+                  <label className="gap" htmlFor="sameage">
+                    Same age
+                    <input
+                      type="radio"
+                      name="age"
+                      value="sameage"
+                      id="sameage"
+                    />
+                  </label>
+                  <label className="gap" htmlFor="older">
+                    Older
+                    <input type="radio" name="age" value="older" id="older" />
+                  </label>
+                  <label className="gap" htmlFor="either">
+                    Either
+                    <input type="radio" name="age" value="either" id="either" />
+                  </label>
+                </div>
+              </div>
+              <div className="main-form-row">
+                <span className="main-form-label">
+                  What interests would you like your partner to have?
+                </span>
+                {hobbies && (
+                  <Select
+                    options={hobbies}
+                    name="hobbies"
+                    placeholder="Select hobbies"
+                    isMulti={true}
                   />
-                </label>
+                )}
               </div>
-            </div>
-            <div className="detail-row">
-              <span className="detail-label">
-                What age range are you looking for?
-              </span>
-              <div>
-                <label className="gap" htmlFor="younger">
-                  Younger
-                  <input type="radio" name="age" value="younger" id="younger" />
-                </label>
-                <label className="gap" htmlFor="sameage">
-                  Same age
-                  <input type="radio" name="age" value="sameage" id="sameage" />
-                </label>
-                <label className="gap" htmlFor="older">
-                  Older
-                  <input type="radio" name="age" value="older" id="older" />
-                </label>
-                <label className="gap" htmlFor="either">
-                  Either
-                  <input type="radio" name="age" value="either" id="either" />
-                </label>
+              <div className="button-row">
+                <button type="Submit">Search</button>
               </div>
-            </div>
-            <div className="detail-row">
-              <span className="detail-label">
-                What interests would you like your partner to have?
-              </span>
-              {hobbies && (
-                <Select
-                  options={hobbies}
-                  name="hobbies"
-                  placeholder="Select hobbies"
-                  isMulti={true}
-                />
-              )}
-            </div>
-            <div className="button-row">
-              <button type="Submit">Search</button>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       ) : (
         <>
-          <div>
+          <div className="message-subtitle">
             <h4>
               Here are some people we think you'd enjoy getting to know based on
               your answers:

@@ -17,22 +17,42 @@
   justify-content: center;
 }
 
-.ProfileDetails {
+.main-menu {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4vh;
+}
+
+.main-details {
   display: flex;
   justify-content: center;
-  width: 35vw;
+  width: 50vw;
 }
 
-.detail-label {
-  font-weight: bold;
-  margin-right: 10px;
-  width: 12vw;
+.main-form {
+  display: grid;
+  font-size: 1.2rem;
+  justify-items: stretch;
+  width: 100%;
 }
 
-.detail-row {
+.main-form-row  {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+}
+
+.main-form-label {
+  font-weight: bold;
+  margin-right: 10px;
+  width: 19vw;
+}
+
+.main-form-input {
+  width: 55%;
 }
 
 .button-row {
